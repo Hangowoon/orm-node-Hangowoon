@@ -1,0 +1,124 @@
+<!-- HTML5버전 문서임을 선언함  -->
+<!-- html : 하이퍼 텍스트 마크업 언어 -->
+<!-- html5 -> 표준화된 첫번째 html -->
+
+<!DOCTYPE html>   
+<html>  
+    <head>  <!--웹브라우저영역 -->
+        <title>ECMASriptd2015 let/const 알아보기</title>
+    </head>
+
+    <body>  <!--보이는 영역 -->
+
+        <h1>let/const 학습하기</h1>
+
+
+        <script>  
+
+            //----------var --------------------------------------------------
+
+            //전통적인 자바스크립트 변수선언방식 var
+            var userName = "한고운";    //문자열
+            var age = 40;               //숫자열
+            var price = 5000;
+            var isFeMale = true;        //불린형
+
+            //기본배송비
+            //정책 : 기본배송비는 한번 할당/설정해두면 변경되면 안된다. 
+            // 전통적인 var 변수선언 방식은 상수(한번 할당하면 변경 불가방식)개념을 지원하지 않는다. 
+            //언제든지 변경이 가능하다. 
+            var baseDelyFee = 3000;
+
+            console.log("기본배송비1:",baseDelyFee);  //웹브라우저 개발자 도구에서 console 확인
+
+            //기본배송비 변경
+            baseDelyFee = 13000;
+
+            console.log("기본배송비2:",baseDelyFee);
+
+
+
+            // ---------------const, let------------------------------------------------------
+            
+            //2015년도 자바스크립트 신규문법으로 추가된 상수 사용
+            const newBaseDelyFee = 5000;
+
+            console.log("상수 표현하는 기본배송비:",newBaseDelyFee);
+
+            //상수로 선언된 배송비를 변경 시 
+            // 상수값을 변경하겨해서 에러가 발생함
+            //newBaseDelyFee = 10000;
+            
+            // 총결제 금액 초기값 할당
+            // let으로 선언된 변수는 초기할당이후 변수값 변경이 가능하다.  = var
+            let totoalPayPrice = 0;
+
+            console.log("총결제 금액-상수 기본배송비:",totoalPayPrice,newBaseDelyFee);
+
+            // let으로 선언된 변수값을 변경
+            totoalPayPrice = 1;
+
+            console.log("변경된 총결제비",totoalPayPrice);
+
+            // var변수서넌방식은 블록스코프 개념이 없어서
+            // 특정 블록안에서 선언된 변수값을 블록범위 밖에서 언제든지 변경이 가능했다.
+            // 이런 var 변수선언방식은 다양한 문제를 초래했다. 
+
+            //총결제금액에 기본배송비를 추가함 
+            totoalPayPrice += baseDelyFee;
+
+            //총결제금액에 기본상품가격을 추가함
+            totoalPayPrice += price;
+
+            console.log("총결제 비용:",totoalPayPrice);
+
+
+
+            //----------블록스코프, var --------------------------------------------------
+
+            //가정문을 통한 블록스코프 정의하기
+            if(isFeMale == true){
+                //상기 조건에 해당하는 현재 범위를 블록스코프라고함
+                //프로그래밍적으로 특정범위내(블록스코프)에서 선언된 변수나 상수는 
+                //해당 범위내에서만 사용이 되어야 하고 변경이 되어야 한다. 
+                var msg = "여성입니다.";
+                
+                console.log("현재 사용자 성별-블록스코프 안에서의 값",msg);
+            }
+
+            msg = "남성입니다.";
+            
+            console.log("현재 사용자 성별-블록스코프 밖에서의 값:", msg);
+
+            //var는 위와 같이 블록스코프 개념준수가 안됨
+            // 이를 개선하기 위해 let, const 는 블록스코프 개념을 준수, 위배시 에러 발생됨
+
+
+
+
+            //----------블록스코프, let, const --------------------------------------------------
+ 
+            const region = "제주도";
+
+            if(region =="제주도"){
+                const addDelyFee = 2000;
+                let addMsg = "도서 배송비가 추가되었습니다.";
+                console.log(addMsg);
+
+                totoalPayPrice += addDelyFee;
+                console.log("if블록스코프 내에서 선언된 변수/상수는 그 안에서 사용이 가능함", addDelyFee, totoalPayPrice);
+            }
+
+            // 특정 블록스코프 내에서 선언된 let, const 값은 범위밖에서 사용시 에러발생 ==> 사용 불가
+            // 블록스코프내에서 선언된 let, const값은 그안에서만 사용 및 변경이 가능하다.
+            //console.log("if구분내에서 선언된 메시지 변수:",addMsg);
+            //console.log("if구분내에서 선언된 도서배송비:",addDelyFee);
+
+
+            
+            //------------------------------------------------------------------------------
+
+        </script>
+
+    </body>
+</html>
