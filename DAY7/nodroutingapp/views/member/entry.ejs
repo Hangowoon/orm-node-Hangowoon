@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+<body>
+    <h1>회원가입</h1>
+
+    <form action="/member/entry" method="post">
+        아이디 : <input type="text" name="id" id="id" required /><br/>
+        비밀번호 : <input type="password" name="password" id="password" required /><br/>
+        이메일 : <input type="email" name="email" id="email" required /><br/>
+        이름 : <input type="text" name="name" id="name" required /><br/>
+        전화번호 : <input type="text" name="telephone" id="telephone" required /><br/>
+        <input type="submit" value="가입하기" />
+    </form>
+</body>
+</html>
