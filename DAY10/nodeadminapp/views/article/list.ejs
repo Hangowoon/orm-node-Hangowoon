@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록 페이지</title>
+</head>
+<body>
+    <h1>게시글 목록 페이지</h1>
+    <a href="/articles/create">신규 게시글 작성</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>내용</th>
+                <th>조회수</th>
+                <th>아이피주소</th>
+                <th>게시여부</th>
+                <th>작성자</th>
+                <th>작성일자</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% for(var i=0;i < articles.length;i++) { %>
+            <tr>
+                <th>
+                    <a href="/articles/update?idx=<%=articles[i].articleIdx%>">
+                        <%=articles[i].articleIdx%>
+                    </a>
+                </th>
+                <th>
+                    <a href="/articles/modify/<%=articles[i].articleIdx%>">
+                        <%=articles[i].title%>
+                    </a>
+                    
+                </th>
+                <th><%=articles[i].contents%></th>
+                <th><%=articles[i].view_cnt%></th>
+                <th><%=articles[i].display%></th>
+                <th><%=articles[i].ipaddress%></th>
+                <th><%=articles[i].registDate%></th>
+                <th><%=articles[i].registMemberId%></th>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>

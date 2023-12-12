@@ -17,11 +17,28 @@ router.get('/entry',function(req,res){
 //회원가입 시 사용자가 입력한 데이터를 받아 회원가입 요청과 응답 처리
 router.post('/entry',function(req,res){
 
-    //1. 웹브라우저에서 사용자가 입력한 회원정보 데이터 추출
+    //step 1  사용자가  입력한 회원가입 정보를 추출한다.
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var name = req.body.name;
+    var telephone = req.body.telephone;
 
-    //2. 모델의 데이터베이스의 데이터 전송, 데이터 비교, 데이터 저장
+    //step 2 DB에 member 테이블에 동일한 사용자 메일주소가 있는지 체크한다.
 
-    //3. 동일 데이터 없으면 회원가입 완료 페이지로 이동
+    //step 3 메일주소가 중복되지 않으면 신규회원으로 해당 사용자 정보를 membe테이블에 저장한다. 
+    //member테이블에 저장할 실제 사용자 정보
+
+    var member = {
+        id:id,
+        email:email,
+        password,
+        name,
+        telephone,
+        entryDate:Date.now()
+    }
+
+    //step 4 데이터가 정상적으로 등록된 경우 사용자 웹페이지를 로그인 페이지로 이동 시켜준다. 
     res.redirect('/member/entryok');
 });
 
