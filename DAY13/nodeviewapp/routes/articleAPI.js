@@ -81,7 +81,7 @@ router.post("/create", async (req, res) => {
 
   try{
 
-    // 1)
+    // 1)사용자가 입력한 게시글 등록 데이터 추출
     var boardTypeCode = req.body.boardTypeCode;
     var title = req.body.title;
     var contents = req.body.contents;
@@ -90,7 +90,11 @@ router.post("/create", async (req, res) => {
     var register = req.body.register;
 
 
-    // 2)
+    // 2)추출된 사용자 입력데이터를 단일 게시글 json 데이터로 구성해서
+    // DB article테이블에 영구적으로 저장한다. 
+    // 저장처리 후 article테이블에 저장된 데이터 반환됨
+
+    // 등록할 게시글 데이터
     var article ={
       boardTypeCode,
       title,
@@ -101,8 +105,8 @@ router.post("/create", async (req, res) => {
       registDate:Date.now()
     }
 
-    var savedArticle = [
-      {
+    //2) DB article 테이블에 데이터를 등록하고 등록된 데이터가 반환
+    var savedArticle ={
         article_id: 1,
         board_type_code: 1,
         title: "공지게시글 1번글입니다.",
@@ -111,13 +115,15 @@ router.post("/create", async (req, res) => {
         ip_address: "111,111,123,123",
         is_display_code: 1,
         reg_date: "2023-12-14",
-        reg_member_id: "sungwoo",
+        reg_member_id: "gowoon",
       }
 
-      // 3)
+      // 3) 정상 데이터 등록처리 결과값 세팅하기
       apiResult.code = 200;
       apiResult.date = savedArticle;
       apiResult.result = "Ok"
+
+
   }catch(err){
     apiResult.code = 500;
     apiResult.data = null;
@@ -129,7 +135,7 @@ router.post("/create", async (req, res) => {
 });
 
 //단일 게시글 수정처리 API 라우팅 메소드
-//http://localhost:3000/api/article/all
+//http://localhost:3000/api/article/update
 router.post("/update", async (req, res) => {
   var apiResult = {
     code: 200,
@@ -138,7 +144,9 @@ router.post("/update", async (req, res) => {
   };
 
   try{
+    // 1) 사용자가 수정한 게시글 수정 데이터 추출
     var articleIdx = req.body.articleIdx;
+
     var boardTypeCode = req.body.boardTypeCode;
     var title = req.body.title;
     var contents = req.body.contents;
@@ -147,9 +155,13 @@ router.post("/update", async (req, res) => {
     var register = req.body.register;
 
 
-    // 1)
+    // 2)추출된 사용자 수정데이터를 단일 게시글 json 데이터로 구성해서
+    // DB article테이블에 수정 처리 반영한다. 
+    // 수정처리 후 적용 건수 반환됨
+
     // 수정할 게시글 데이터
     var article ={
+      articleIdx,
       boardTypeCode,
       title,
       contents,
@@ -163,10 +175,11 @@ router.post("/update", async (req, res) => {
     // db수정처리함 처리 후 적용건수 1이 반환되었다고 가정함
     var affectedCnt = 1;
 
-    // 3) 정상 수정된 정보를 
+    // 3) 정상 수정된 정보를 apiResult객체 바인딩함
     apiResult.code = 200;
     apiResult.data = affectedCnt;
     apiResult.result = "Ok"
+
 
   }catch(err){
     apiResult.code = 500;
@@ -179,7 +192,7 @@ router.post("/update", async (req, res) => {
 });
 
 //단일 게시글 데이터 조회 반환 API 라우팅 메소드
-//http://localhost:3000/api/article/all
+//http://localhost:3000/api/article/1
 router.get("/:aidx", async (req, res) => {
   var apiResult = {
     code: 200,
@@ -201,10 +214,12 @@ router.get("/:aidx", async (req, res) => {
       view_count: 10,
       ip_address: "111,111,123,123",
       is_display_code: 1,
+      article_type_code:1,
       reg_date: "2023-12-14",
-      reg_member_id: "sungwoo",
+      reg_member_id: "gowoon",
     };
 
+    // 3) 정상 조회된 정보를 apiResult 객체 바인딩함 
     apiResult.code = 200;
     apiResult.data = article;
     apiResult.result = "Ok"
@@ -212,7 +227,7 @@ router.get("/:aidx", async (req, res) => {
 
   }catch(err){
     apiResult.code = 500;
-    apiResult.data = 0;
+    apiResult.data = null;
     apiResult.result = "Failed"
 
   };
@@ -221,7 +236,7 @@ router.get("/:aidx", async (req, res) => {
 });
 
 //단일 전체 게시글 삭제처리 API 조회 반환 라우팅 메소드
-//http://localhost:3000/api/article/all
+//http://localhost:3000/api/article/1
 router.delete("/:aidx", async (req, res) => {
   var apiResult = {
     code: 200,
@@ -241,7 +256,7 @@ router.delete("/:aidx", async (req, res) => {
 
     // 4) 정상 삭제된 정보를 apiResult객체 바인딩함
     apiResult.code = 200;
-    apiResult.data = article;
+    apiResult.data = deletedCnt;
     apiResult.result = "Ok"
 
   }catch(err){
