@@ -7,13 +7,13 @@ var router = express.Router();
 // 관리자 계정 로그인 완료 후 메인 웹페이지 요청 및 응답
 // http://localhost:3001/
 router.get('/',async(req,res,next)=>{
-  res.render('index');
+  res.render('index',{layout:"layout/layout_intro"});
 });
 
 // 관리자 계정 로그인 웹페이지 요청 및 응답
 // http://localhost:3001/login
 router.get('/login',async(req,res,next)=>{
-  res.render('login');
+  res.render('login',{layout:"layout/layout_intro"});
 });
 
 
@@ -29,8 +29,15 @@ router.post('/login',async(req,res,next)=>{
 
 
   // 3) 정상이면 사용자 웹페이지로 이동 
-  res.redirect('/');
+  res.redirect('/home');
 });
+
+
+
+router.get('/home',async(req,res,next)=>{
+  res.render('home');
+});
+
 
 //
 

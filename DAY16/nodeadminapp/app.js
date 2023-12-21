@@ -25,7 +25,8 @@ app.set('view engine', 'ejs');
 
 
 //레이아웃 설정
-app.set('layout', 'layout.ejs');  // 해당 노드앱의 모든 콘텐츠 뷰파일의 기본 레이아웃 ejs파일 설정하기
+app.set('layout', 'layout/layout_intro.ejs');  // 해당 노드앱의 모든 콘텐츠 뷰파일의 기본 레이아웃 ejs파일 설정하기
+app.set('layout', 'layout/layout_main.ejs');  // 해당 노드앱의 모든 콘텐츠 뷰파일의 기본 레이아웃 ejs파일 설정하기
 app.set("layout extractScripts", true);  // 콘텐츠페이지내 script태그를 레이아웃에 통합할지여부
 app.set("layout extractStyles", true);  // 콘텐츠페이지내 style태그를 레이아웃에 통합할지여부
 app.set("layout extractMetas", true);   // 콘텐츠페이지내 meta태그를 레이아웃에 통합할지여부

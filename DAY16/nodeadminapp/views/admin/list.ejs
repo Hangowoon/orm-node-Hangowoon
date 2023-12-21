@@ -1,15 +1,128 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 계정 정보관리 페이지</title>
-</head>
-<body>
-    <h1>관리자 계정 정보관리 페이지</h1>
+<meta name="관리자 계정 정보 관리 페이지" content="관리자 계정 정보 관리 페이지입니다.">
 
-    <a href="/admin/create">신규</a>
-    <a href="/admin/modify">수정</a>
+<style></style>
 
-</body>
-</html>
+
+            <!--우측 상단 헤더 영역 -->
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>관리자 계정 정보관리</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/">Home></a>
+                        </li>
+                        <li>
+                            <a>관리자 계정 정보관리></a>
+                        </li>
+                        <li class="active">
+                            <strong>조회</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <!--우측 콘텐츠 영역 -->
+            <div class="wrapper wrapper-content">
+
+                <!-- 사용자 정보조회 옵션 및 조회 영역 -->
+                <form action="/admin/list" method="post">
+                    <div class="ibox-content m-b-sm border-bottom">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrderNo">메일주소</label>
+                                    <input type="text" name="email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrderName">이름</label>
+                                    <input type="text" name="name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="MobileNo">전화번호</label>
+                                    <input type="text" name="telephone" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">조회</button>
+                            <a href="/admin/create" class="btn btn-info">신규</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- 사용자 정보조회 결과 목록 표시 영역 -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <div class="table-responsive">
+
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="10%">순번</th>
+                                                <th width="10%">메일주소</th>
+                                                <th width="20%">이름</th>
+                                                <th width="20%">전화번호</th>
+                                                <th width="10%">생년월일</th>
+                                                <th width="10%">사용상태</th>
+                                                <th width="20%">등록일자</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="hoverTblBody">
+
+                                            <tr>
+                                                <td><a href="/admin/modify/:aid">1</a></td>
+                                                <td><a href="#">admin1@naver.com</a></td>
+                                                <td>관리자1</td>
+                                                <td>010-0000-0000</td>
+                                                <td>2023-00-00</td>
+                                                <td>이용중</td>
+                                                <td>2023-12-19</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td><a href="/admin/modify/:aid">2</a></td>
+                                                <td><a href="#">admin2@naver.com</a></td>
+                                                <td>관리자2</td>
+                                                <td>010-0000-0000</td>
+                                                <td>2023-00-00</td>
+                                                <td>탈퇴</td>
+                                                <td>2023-12-19</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td><a href="/admin/modify/:aid">3</a></td>
+                                                <td><a href="#">admin3@naver.com</a></td>
+                                                <td>관리자3</td>
+                                                <td>010-0000-0000</td>
+                                                <td>2023-00-00</td>
+                                                <td>일시중지</td>
+                                                <td>2023-12-19</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+    <script>
+
+    </script>
+

@@ -1,15 +1,132 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 정보관리 페이지</title>
-</head>
-<body>
-    <h1>게시글 정보관리 페이지</h1>
+<meta name="게시글 정보관리 페이지" content="게시글 정보관리 페이지입니다.">
 
-    <a href="/article/create">신규</a>
-    <a href="/article/modify">수정</a>
+<style></style>
 
-</body>
-</html>
+
+            <!--우측 상단 헤더 영역 -->
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>게시글 정보관리</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/">Home></a>
+                        </li>
+                        <li>
+                            <a>게시글 정보관리></a>
+                        </li>
+                        <li class="active">
+                            <strong>조회</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <!--우측 콘텐츠 영역 -->
+            <div class="wrapper wrapper-content">
+
+                <!-- 사용자 정보조회 옵션 및 조회 영역 -->
+                <form action="/article/list" method="post">
+                    <div class="ibox-content m-b-sm border-bottom">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrderNo">게시글유형</label>
+                                    <input type="text" name="email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrderName">게시글 제목</label>
+                                    <input type="text" name="name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="MobileNo">작성자</label>
+                                    <input type="text" name="telephone" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">조회</button>
+                            <a href="/article/create" class="btn btn-info">신규</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- 사용자 정보조회 결과 목록 표시 영역 -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <div class="table-responsive">
+
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="10%">게시글구분코드</th>
+                                                <th width="10%">게시글제목</th>
+                                                <th width="10%">게시글유형코드</th>
+                                                <th width="20%">글내용</th>
+                                                <th width="10%">뷰카운트</th>
+                                                <th width="10%">IP주소</th>
+                                                <th width="20%">게시상태코드</th>
+                                                <th width="20%">등록일시</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="hoverTblBody">
+
+                                            <tr>
+                                                <td><a href="/article/modify/1">1</a></td>
+                                                <td><a href="/article/modify/1">제목1</a></td>
+                                                <td>공지</td>
+                                                <td>글내용1</td>
+                                                <td>10</td>
+                                                <td>111.111.111.111</td>
+                                                <td>게시중</td>
+                                                <td>2023-12-20</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td><a href="/article/modify/2">2</a></td>
+                                                <td><a href="/article/modify/2">제목2</a></td>
+                                                <td>일반</td>
+                                                <td>글내용2</td>
+                                                <td>20</td>
+                                                <td>222.222.222.222</td>
+                                                <td>게시중</td>
+                                                <td>2023-12-20</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td><a href="/article/modify/3">3</a></td>
+                                                <td><a href="/article/modify/3">제목3</a></td>
+                                                <td>문의</td>
+                                                <td>글내용3</td>
+                                                <td>30</td>
+                                                <td>333.333.333.333</td>
+                                                <td>게시중</td>
+                                                <td>2023-12-20</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+    <script>
+
+    </script>
+

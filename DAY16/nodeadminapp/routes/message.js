@@ -1,4 +1,4 @@
-// 채팅 베시지 이력 정보 관리 라우팅 기능 제공
+// 채팅 메시지 이력 정보 관리 라우팅 기능 제공
 
 var express = require('express');
 var router = express.Router();
