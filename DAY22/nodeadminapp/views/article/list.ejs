@@ -86,15 +86,34 @@
                                         </thead>
                                         <tbody class="hoverTblBody">
 
-                                            <tr>
-                                                <td>1</td>
-                                                <td><a href="/article/modify/:aid">제목1</a></td>
-                                                <td>일반 게시글</td>
-                                                <td>100</td>
-                                                <td>111.111.111.111</td>
-                                                <td>게시함</td>
-                                                <td>2023-12-28 16:28</td>
-                                            </tr>
+                                            <% for(var i =0;i < articles.length;i++){ %> 
+                                                <tr>
+                                                    <td><%=articles.length-i%></td>
+                                                    <td><a href="/article/modify/<%=articles[i].article_id%>"><%=articles[i].title%></a></td>
+                                                    <td>
+
+                                                        <% if(articles[i].article_type_code == 0){%>
+                                                            일반 게시글
+                                                        <%} else {%>
+                                                            고정 게시글
+                                                        <%} %>
+
+                                                    </td>
+                                                    <td><%=articles[i].view_count%></td>
+                                                    <td><%=articles[i].ip_address%></td>
+                                                    <td>
+
+                                                        <% if(articles[i].is_display_code == 1){%>
+                                                            게시함
+                                                        <%} else {%>
+                                                            게시안함
+                                                        <%} %>
+
+                                                    </td>
+                                                    <td><%=moment(articles[i].edit_date).format('YYYY-MM-DD HH:mm:ss')%></td>
+                                                </tr>
+                                            
+                                            <% } %>
 
                                         </tbody>
                                     </table>

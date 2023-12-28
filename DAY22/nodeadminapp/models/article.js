@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes){
         article_type_code: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            comment: '게시글유형코드 0:일반게시글 1:상단고정게시글',
+            comment: '게시글유형코드 0:일반게시글 1:고정게시글',
         },
         contents: {
             type: DataTypes.TEXT,

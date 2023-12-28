@@ -23,10 +23,10 @@ db.Sequelize = Sequelize; //Sequelize팩키지에서 제공하는 각종 데이�
 db.Member = require('./member.js')(sequelize,Sequelize);
 
 //게시글 정보 모델 모듈파일 참조하고 db속성정의하기
-db.Member = require('./article.js')(sequelize,Sequelize);
+db.Article = require('./article.js')(sequelize,Sequelize);
 
 //관리자 계정 모델 모듈파일 참조하고 db속성정의하기
-db.Member = require('./admin.js')(sequelize,Sequelize);
+db.Admin = require('./admin.js')(sequelize,Sequelize);
 
 
 //db객체 외부로 노출하기
