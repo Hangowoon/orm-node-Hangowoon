@@ -6,13 +6,13 @@
             <!--우측 상단 헤더 영역 -->
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>게시글 정보관리</h2>
+                    <h2>게시글 목록조회</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="/">Home></a>
                         </li>
                         <li>
-                            <a>게시글 정보관리></a>
+                            <a>게시글 정보목록></a>
                         </li>
                         <li class="active">
                             <strong>조회</strong>
@@ -27,26 +27,34 @@
             <!--우측 콘텐츠 영역 -->
             <div class="wrapper wrapper-content">
 
-                <!-- 사용자 정보조회 옵션 및 조회 영역 -->
-                <form action="/article/list" method="post">
+                <!-- 게시글 정보조회 옵션 및 조회 영역 -->
+                <form action="/article/list" method="post" id="articleListForm">
                     <div class="ibox-content m-b-sm border-bottom">
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label" for="OrderNo">게시글유형</label>
-                                    <input type="text" name="email" class="form-control">
+                                    <label class="control-label" for="articleTypeCode">게시글유형</label>
+                                    <select name="articleTypeCode" id="articleTypeCode" class="form-control">
+                                        <option value="9" selected>전체</option>
+                                        <option value="0">일반 게시글</option>
+                                        <option value="1">고정 게시글</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label" for="OrderName">게시글 제목</label>
-                                    <input type="text" name="name" class="form-control">
+                                    <label class="control-label" for="title">게시글 제목</label>
+                                    <input type="text" name="title" id="title" class="form-control">
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label" for="MobileNo">작성자</label>
-                                    <input type="text" name="telephone" class="form-control">
+                                    <label class="control-label" for="isDisplayCode">게시 여부</label>
+                                    <select name="isDisplayCode" id="isDisplayCode" class="form-control">
+                                        <option value="9" selected>전체</option>
+                                        <option value="0">게시 안함</option>
+                                        <option value="1">게시함</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +65,7 @@
                     </div>
                 </form>
 
-                <!-- 사용자 정보조회 결과 목록 표시 영역 -->
+                <!-- 게시글 정보조회 결과 목록 표시 영역 -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
@@ -67,49 +75,25 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th width="10%">게시글구분코드</th>
-                                                <th width="10%">게시글제목</th>
-                                                <th width="10%">게시글유형코드</th>
-                                                <th width="20%">글내용</th>
-                                                <th width="10%">뷰카운트</th>
+                                                <th width="10%">글순번</th>
+                                                <th width="10%">글제목</th>
+                                                <th width="10%">게시글유형</th>
+                                                <th width="20%">조회수</th>
                                                 <th width="10%">IP주소</th>
-                                                <th width="20%">게시상태코드</th>
-                                                <th width="20%">등록일시</th>
+                                                <th width="20%">게시상태</th>
+                                                <th width="20%">작성일</th>
                                             </tr>
                                         </thead>
                                         <tbody class="hoverTblBody">
 
                                             <tr>
-                                                <td><a href="/article/modify/1">1</a></td>
-                                                <td><a href="/article/modify/1">제목1</a></td>
-                                                <td>공지</td>
-                                                <td>글내용1</td>
-                                                <td>10</td>
+                                                <td>1</td>
+                                                <td><a href="/article/modify/:aid">제목1</a></td>
+                                                <td>일반 게시글</td>
+                                                <td>100</td>
                                                 <td>111.111.111.111</td>
-                                                <td>게시중</td>
-                                                <td>2023-12-20</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><a href="/article/modify/2">2</a></td>
-                                                <td><a href="/article/modify/2">제목2</a></td>
-                                                <td>일반</td>
-                                                <td>글내용2</td>
-                                                <td>20</td>
-                                                <td>222.222.222.222</td>
-                                                <td>게시중</td>
-                                                <td>2023-12-20</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><a href="/article/modify/3">3</a></td>
-                                                <td><a href="/article/modify/3">제목3</a></td>
-                                                <td>문의</td>
-                                                <td>글내용3</td>
-                                                <td>30</td>
-                                                <td>333.333.333.333</td>
-                                                <td>게시중</td>
-                                                <td>2023-12-20</td>
+                                                <td>게시함</td>
+                                                <td>2023-12-28 16:28</td>
                                             </tr>
 
                                         </tbody>
