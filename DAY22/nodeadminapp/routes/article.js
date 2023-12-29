@@ -9,12 +9,18 @@ var moment = require('moment');
 // ORM DB객체 참조 
 var db = require('../models/index');
 
+
 //게시글 목폭 페이지 호출
 //http://localhost:3001/article/list
 router.get('/list',async(req,res,next)=>{
 
     // article 테이블의 모든 게시글 목록을 조회해옴 
-    let articles = await db.Article.findAll();
+    //let articles = await db.Article.findAll();
+
+    // article 테이블의 모든 선택 목록을 조회해옴 
+    let articles = await db.Article.findAll({
+        attributes:['article_id','article_type_code', 'view_count', 'ip_address', 'is_display_code', 'edit_date']
+    });
 
     // 조회결과 모든 게시글 데이터를 뷰에 전달
     res.render('article/list',{ articles,moment });

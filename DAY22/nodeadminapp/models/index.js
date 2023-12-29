@@ -28,6 +28,9 @@ db.Article = require('./article.js')(sequelize,Sequelize);
 //관리자 계정 모델 모듈파일 참조하고 db속성정의하기
 db.Admin = require('./admin.js')(sequelize,Sequelize);
 
+//채널 모델 모듈파일 참조하고 db속성정의하기
+db.Channel = require('./channel.js')(sequelize,Sequelize);
+
 
 //db객체 외부로 노출하기
 module.exports = db;

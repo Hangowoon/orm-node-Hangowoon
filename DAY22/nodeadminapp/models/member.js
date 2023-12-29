@@ -7,46 +7,46 @@ module.exports = function(sequelize, DataTypes){
             autoIncrement: true,
             primaryKey:true,
             allowNull:false,
-            comment:'사용자 고유번호'
+            comment:'회원고유번호'
         },
         email:{
             type:DataTypes.STRING(100),
             allowNull:false,
-            comment:'이메일주소'
+            comment:'사용자 메일주소'
         },
         member_password:{
             type:DataTypes.STRING(500),
             allowNull:false,
-            comment:'비밀번호'
+            comment:'사용자 난독화된 해시암호문자열'
         },
         name:{
             type:DataTypes.STRING(100),
             allowNull:false,
-            comment:'이름'
+            comment:'회원명'
         },
         profile_img_path:{
             type:DataTypes.STRING(300),
-            allowNull:false,
-            comment:'프로필이미지경로'
+            allowNull:true,
+            comment:'회원프로필 이미지경로'
         },
         telephone:{
             type:DataTypes.STRING(20),
-            allowNull:false,
+            allowNull:true,
             comment:'전화번호'
         },
         entry_type_code:{
             type:DataTypes.TINYINT,
             allowNull:false,
-            comment:'가입유형코드 0: 1:'
+            comment:'가입유형코드 0:직접가입 1:페이스북SNS'
         },
         use_state_code:{
             type:DataTypes.TINYINT,
             allowNull:false,
-            comment:'가입상태코드 0:사용안함 1:사용함'
+            comment:'이용상태 0:허용대기 1:사용중 2:탈퇴처리'
         },
         birth_date:{
             type:DataTypes.STRING(6),
-            allowNull:false,
+            allowNull:true,
             comment:'생년월일'
         },
         reg_member_id:{
@@ -74,7 +74,7 @@ module.exports = function(sequelize, DataTypes){
         sequelize,
         tableName: 'member', // 기본 테이블명 옵션이 복수형이 아닌 여기 지정한 테이블명으로 생성됨
         timestamps: false,
-        comment: '사용자정보',
+        comment: '회원정보',
         indexes: [
             {
                 name: 'PRIMARY',

@@ -78,35 +78,19 @@
                                         </thead>
                                         <tbody class="hoverTblBody">
 
-                                            <tr>
-                                                <td><a href="#">1</a></td>
-                                                <td><a href="#">member1@naver.com</a></td>
-                                                <td>사용자1</td>
-                                                <td>010-0000-0000</td>
-                                                <td>2023-00-00</td>
-                                                <td>이용중</td>
-                                                <td>2023-12-19</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><a href="#">2</a></td>
-                                                <td><a href="#">member2@naver.com</a></td>
-                                                <td>사용자2</td>
-                                                <td>010-0000-0000</td>
-                                                <td>2023-00-00</td>
-                                                <td>탈퇴</td>
-                                                <td>2023-12-19</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><a href="#">3</a></td>
-                                                <td><a href="#">member3@naver.com</a></td>
-                                                <td>사용자3</td>
-                                                <td>010-0000-0000</td>
-                                                <td>2023-00-00</td>
-                                                <td>일시중지</td>
-                                                <td>2023-12-19</td>
-                                            </tr>
+                                            <% for(var i =0; i < members.length; i++){%>
+                                                <tr>
+                                                    <td><%=members.length-i%></td>
+                                                    <td><a href="#">member1@naver.com</a></td>
+                                                    <td>사용자1</td>
+                                                    <td>010-0000-0000</td>
+                                                    <td>2023-00-00</td>
+                                                    <td>이용중</td>
+                                                    <td>2023-12-19</td>
+                                                </tr>
+                                                
+                                            <%} <%>
+                                            
 
                                         </tbody>
                                     </table>
