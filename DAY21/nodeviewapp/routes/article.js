@@ -6,6 +6,8 @@ var router = express.Router();
 
 var db = require('../models/index');
 var Op = db.Sequelize.Op;
+var sequelize = db.sequelize;
+const { QueryTypes } = sequelize;
 
 // 게시글 등록 조회 웹페이지 요청 및 응답 라우팅 메소드
 router.get('/list',async(req,res) =>{
@@ -20,22 +22,33 @@ router.get('/list',async(req,res) =>{
 
     // 지정한 컬럼만 조회하기
     // 
-    var articles = await db.Article.findAll(
-        {
-            attributes: ['article_id', 'board_type_code', 'title', 'article_type_code', 'view_count', 'is_display_code', 'reg_date', 'reg_member_id'],
-            where:{
-                //is_display_code:1,
-                //view_count: {[Op.not]:0}
-            },
-            order: [
-                ['article_id','DESC']  // DESC 오름차순 ASC 내림차순
-            ]
-        }
-    );
+    // var articles = await db.Article.findAll(
+    //     {
+    //         attributes: ['article_id', 'board_type_code', 'title', 'article_type_code', 'view_count', 'is_display_code', 'reg_date', 'reg_member_id'],
+    //         where:{
+    //             //is_display_code:1,
+    //             //view_count: {[Op.not]:0}
+    //         },
+    //         order: [
+    //             ['article_id','DESC']  // DESC 오름차순 ASC 내림차순
+    //         ]
+    //     }
+    // );
+
+    var sqlQuery = `SELECT article_id, board_type_code, title, article_type_code, view_count, ip_address, is_display_code, reg_date, reg_member_id  FROM article;
+    WHERE is_display_code = 1
+    ORDER BY article_id DESC;`;
+
+    var articles = await sequelize.query(sqlQuery,{
+        raw: true,
+        type: QueryTypes.SELECT,
+        });
     
+    // Selec Count(*) FROM article SQL쿼리로 생성됨 
+    var articleCount = await db.Article.count();
 
     // 2) 게시글 전체 목록을 list.ejs뷰에 전달
-    res.render('article/list',{articles,searchOption});
+    res.render('article/list',{articles,searchOption, articleCount});
 });
 
 //게시글 목록에서 조회옵션 데이터를 전달받아 조회옵션기반 게시글 목록 조회 후
@@ -56,6 +69,7 @@ router.post('/list',async(req,res) =>{
     // 2) 사용자가 입력/선택한 조회옵션 데이터를 기반으로 DB에서 게시글 목록을 재조회해온다
     // SELECT * FROM article WHERE board_type_code = 1 SQL 구문으로 변환되어 DB서버에 전달실행
     var articles = await db.Article.findAll({where:{board_type_code:searchOption.boardTypeCode}});
+
 
     // 3) 게시글 목록 페이지 list.ejs에 데이터 목록을 전달한다.
     res.render('article/list',{articles,searchOption});
